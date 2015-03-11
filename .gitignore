@@ -1,0 +1,2 @@
+# Exclude the CLI thingy - that's for testing purposes only
+bamboo-cli
