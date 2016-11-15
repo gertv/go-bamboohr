@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 type Bamboo struct {
@@ -89,4 +90,20 @@ func body(resp *http.Response) ([]byte, error) {
 		return nil, err
 	}
 	return buf.Bytes(), nil
+}
+
+func (i Item) StartTime() time.Time {
+	time, err := time.Parse("2006-01-02", i.Start)
+	if err != nil {
+		panic(err)
+	}
+	return time
+}
+
+func (i Item) EndTime() time.Time {
+	time, err := time.Parse("2006-01-02", i.End)
+	if err != nil {
+		panic(err)
+	}
+	return time
 }
